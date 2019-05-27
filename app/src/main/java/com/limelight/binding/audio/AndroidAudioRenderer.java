@@ -167,16 +167,17 @@ public class AndroidAudioRenderer implements AudioRenderer {
         return 0;
     }
 
-    @Override
-    public void playDecodedAudio(byte[] audioData) {
-        track.write(audioData, 0, audioData.length);
-    }
 
     @Override
     public void start() {}
 
     @Override
     public void stop() {}
+
+    @Override
+    public void playDecodedAudio(byte[] audioData) {
+
+    }
 
     @Override
     public void cleanup() {

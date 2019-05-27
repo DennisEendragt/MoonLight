@@ -12,6 +12,10 @@ android {
         versionCode = 189
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     flavorDimensions "root"
 
     productFlavors {
@@ -119,4 +123,10 @@ dependencies {
     implementation 'org.jcodec:jcodec:0.2.3'
 
     implementation project(':moonlight-common')
+    testImplementation 'org.robolectric:robolectric:3.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation ('com.squareup.assertj:assertj-android:1.0.0') {
+        exclude module: 'support-annotations'
+    }
 }

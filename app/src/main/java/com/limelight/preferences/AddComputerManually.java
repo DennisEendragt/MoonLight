@@ -98,7 +98,7 @@ public class AddComputerManually extends Activity {
             getResources().getString(R.string.msg_add_pc), false);
 
         try {
-            success = managerBinder.addComputerBlocking(host, true);
+            success = computerConnected(host);
         } catch (IllegalArgumentException e) {
             // This can be thrown from OkHttp if the host fails to canonicalize to a valid name.
             // https://github.com/square/okhttp/blob/okhttp_27/okhttp/src/main/java/com/squareup/okhttp/HttpUrl.java#L705
@@ -226,6 +226,10 @@ public class AddComputerManually extends Activity {
         // Bind to the ComputerManager service
         bindService(new Intent(AddComputerManually.this,
                     ComputerManagerService.class), serviceConnection, Service.BIND_AUTO_CREATE);
+    }
+
+    public boolean computerConnected(String host) {
+        return managerBinder.addComputerBlocking(host, true);
     }
 
     // Returns true if the event should be eaten
