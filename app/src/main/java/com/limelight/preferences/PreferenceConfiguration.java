@@ -86,7 +86,7 @@ public class PreferenceConfiguration {
     public boolean vibrateOsc;
     public boolean vibrateFallbackToDevice;
 
-    private static int getHeightFromResolutionString(String resString) {
+    public static int getHeightFromResolutionString(String resString) {
         if (resString.equalsIgnoreCase("360p")) {
             return 360;
         }
@@ -111,7 +111,7 @@ public class PreferenceConfiguration {
         }
     }
 
-    private static int getWidthFromResolutionString(String resString) {
+    public static int getWidthFromResolutionString(String resString) {
         int height = getHeightFromResolutionString(resString);
         if (height == 480) {
             // This isn't an exact 16:9 resolution
@@ -122,7 +122,7 @@ public class PreferenceConfiguration {
         }
     }
 
-    private static String getResolutionString(int width, int height) {
+    public static String getResolutionString(int width, int height) {
         switch (height) {
             case 360:
                 return "360p";
