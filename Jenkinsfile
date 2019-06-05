@@ -14,7 +14,7 @@ pipeline {
     stage('Stage build') {
       steps {
         sh '''git update-index --chmod=+x gradlew
-./gradlew clean assemble'''
+'''
       }
     }
   }
