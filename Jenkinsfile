@@ -15,11 +15,11 @@ pipeline {
       parallel {
         stage('Stage build') {
           steps {
-            sh '''git update-index --chmod=+x gradlew
+            sh '''chmod +x gradlew
 '''
           }
         }
-        stage('') {
+        stage('error') {
           steps {
             sh './gradlew clean assemble'
           }
