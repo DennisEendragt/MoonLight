@@ -19,7 +19,7 @@ pipeline {
 '''
           }
         }
-        stage('error') {
+        stage('Stage Assemble') {
           steps {
             sh './gradlew clean assemble'
           }
