@@ -6,9 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('Stage 1') {
+    stage('Checkout') {
       steps {
-        sh '\'git submodule update --init\' '
+        sh 'git submodule update --init'
       }
     }
   }
