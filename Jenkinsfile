@@ -12,9 +12,18 @@ pipeline {
       }
     }
     stage('Stage build') {
-      steps {
-        sh '''git update-index --chmod=+x gradlew
+      parallel {
+        stage('Stage build') {
+          steps {
+            sh '''git update-index --chmod=+x gradlew
 '''
+          }
+        }
+        stage('') {
+          steps {
+            sh './gradlew clean assemble'
+          }
+        }
       }
     }
   }
