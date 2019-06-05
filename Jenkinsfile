@@ -6,9 +6,14 @@ pipeline {
 
   }
   stages {
-    stage('Checkout') {
+    stage('Stage Checkout') {
       steps {
         sh 'git submodule update --init'
+      }
+    }
+    stage('Stage build') {
+      steps {
+        sh './gradlew clean assemble'
       }
     }
   }
