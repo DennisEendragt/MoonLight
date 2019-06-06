@@ -19,11 +19,12 @@ pipeline {
           steps {
             sh "gradle clean build"
           }
-          stage("Test") {
-            steps {
-              sh "gradle test"
-            }
+        }
+        stage("Test") {
+          steps {
+            sh "gradle test"
           }
+        }
         }
         // post {
           // always {
