@@ -1,10 +1,7 @@
 pipeline {
-  agent {
-    docker {
-      image 'jenkinsci/blueocean'
+   agent {
+        label 'docker'
     }
-
-  }
   stages {
     stage('Stage Checkout') {
       steps {
@@ -15,13 +12,13 @@ pipeline {
       parallel {
         stage('Stage build') {
           steps {
-            sh '''chmod +x gradlew
-'''
+            sh "chmod +x gradlew"
+            sh "./gradlew build"
           }
         }
         stage('Stage assemble') {
           steps {
-            sh './gradlew clean build --stacktrace'
+            sh "./gradlew test"
           }
         }
       }
