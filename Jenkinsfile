@@ -25,7 +25,7 @@ pipeline {
             sh "gradle test"
           }
         }
-        }
+       
         // post {
           // always {
             // archiveArtifacts artifacts: 'target/**.jar', fingerprint: true
