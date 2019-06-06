@@ -33,6 +33,7 @@ pipeline {
           // }
         // }
       }
+      }
       stage("Verify") {
         agent {
           docker {
@@ -56,4 +57,3 @@ pipeline {
       }
     }
   }
-}
