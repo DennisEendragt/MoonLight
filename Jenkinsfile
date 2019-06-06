@@ -19,14 +19,9 @@ pipeline {
 '''
           }
         }
-        stage('Stage Clean') {
-          steps {
-            sh './gradlew clean'
-          }
-        }
         stage('Stage assemble') {
           steps {
-            sh './gradlew assembleDebug'
+            sh './gradlew clean build'
           }
         }
       }
