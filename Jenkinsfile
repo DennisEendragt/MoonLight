@@ -1,28 +1,29 @@
 pipeline {
-  agent { label 'master' }
+  agent {
+    docker {
+      image 'openjdk:8-jdk'
+      args '-v gradle-repo:/root/.gradle'
+      reuseNode true
+    }
+
+  }
   stages {
     stage('Stage Checkout') {
       steps {
+        sh 'chmod +x gradlew'
         sh 'git submodule update --init --recursive'
       }
     }
-    stage("Run with JDK 8 and gradle") {
-      agent {
-        docker {
-          image 'cangol/android-gradle'
-          args '-v gradle-repo:/root/.gradle'
-          reuseNode true
-        }
-      }
-      stages {
-        stage("Build") {
+    stage('Stage build') {
+      parallel {
+        stage('Stage build') {
           steps {
-            sh "gradle clean build"
+            echo 'test'
           }
         }
-        stage("Test") {
+        stage('Stage assemble') {
           steps {
-            sh "gradle test"
+            sh './gradlew clean build --stacktrace'
           }
         }
       }
