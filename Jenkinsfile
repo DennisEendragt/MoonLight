@@ -9,7 +9,7 @@ pipeline {
     stage("Run with JDK 8 and gradle") {
       agent {
         docker {
-          image 'android-gradle'
+          image 'cangol/android-gradle'
           args '-v gradle-repo:/root/.gradle'
           reuseNode true
         }
