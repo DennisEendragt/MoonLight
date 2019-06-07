@@ -1,16 +1,15 @@
 pipeline {
   agent any
-  
-    stages {
-      stage('Stage Checkout') {
-        steps {
-          sh 'chmod +x gradlew'
-          sh 'git submodule update --init --recursive'
-       }
-     }
-    stage("Build") {
+  stages {
+    stage('Stage Checkout') {
       steps {
-        sh "gradle clean build"
+        sh 'chmod +x gradlew'
+        sh 'git submodule update --init --recursive'
+      }
+    }
+    stage('Build') {
+      steps {
+        sh 'gradle clean build'
       }
     }
   }
