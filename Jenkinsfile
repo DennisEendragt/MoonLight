@@ -12,4 +12,7 @@ pipeline {
       }
     }
   }
+  environment {
+    GRADLE_USER_HOME = 'C:\\Users\\Local-Admin\\AppData\\Local\\Android\\Sdk'
+  }
 }
