@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Stage Build') {
       steps {
-        sh './gradlew clean build --stacktrace'
+        sh './gradlew clean build -x lint --stacktrace'
       }
     }
   }
