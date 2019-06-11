@@ -1,18 +1,22 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'cirrusci/android-sdk:tools'
+      args '-v gradle-repo:/root/.gradle'
+      reuseNode true
+    }
+  }
   stages {
     stage('Stage Checkout') {
       steps {
+        sh 'chmod +x gradlew'
         sh 'git submodule update --init --recursive'
       }
     }
-    stage('Stage Build') {
+    stage('Stage assemble') {
       steps {
         sh './gradlew clean build -x lint --stacktrace'
       }
     }
-  }
-  environment {
-    GRADLE_USER_HOME = 'C:\\Users\\Local-Admin\\AppData\\Local\\Android\\Sdk'
   }
 }
