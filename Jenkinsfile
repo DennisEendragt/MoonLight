@@ -26,11 +26,11 @@ pipeline {
     }
     stage('Stage Verify') {
       steps {
-        sh '''./gradlew sonarqube \\
-  -Dsonar.projectKey=DennisEendragt_MoonLight \\
-  -Dsonar.organization=denniseendragt-github \\
-  -Dsonar.host.url=https://sonarcloud.io \\
-  -Dsonar.login=4034cf9fc8967369b1e64f53bdaeddd1fc33991b'''
+        sh './gradlew sonarqube \
+          -Dsonar.projectKey=DennisEendragt_MoonLight \
+          -Dsonar.organization=denniseendragt-github \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=4034cf9fc8967369b1e64f53bdaeddd1fc33991b'
       }
     }
   }
