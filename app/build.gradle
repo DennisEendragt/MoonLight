@@ -11,6 +11,10 @@ android {
         versionName "7.1"
         versionCode = 189
     }
+    
+    plugins {
+      id "org.sonarqube" version "2.7"
+    }
 
     testOptions {
         unitTests.returnDefaultValues = true
