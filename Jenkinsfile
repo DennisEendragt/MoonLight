@@ -5,6 +5,7 @@ pipeline {
       args '-v gradle-repo:/root/.gradle'
       reuseNode true
     }
+
   }
   stages {
     stage('Stage Checkout') {
@@ -16,6 +17,11 @@ pipeline {
     stage('Stage assemble') {
       steps {
         sh './gradlew clean build -x lint --stacktrace'
+      }
+    }
+    stage('Stage Test') {
+      steps {
+        sh './gradlew test'
       }
     }
   }
