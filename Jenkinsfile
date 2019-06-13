@@ -25,13 +25,15 @@ pipeline {
       }
     }
     stage('Stage Verify') {
-      steps {
-        sh './gradlew sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=4034cf9fc8967369b1e64f53bdaeddd1fc33991b -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
+      withSonarQubeEnv('My SonarQube Server') {
+        // requires SonarQube Scanner for Gradle 2.1+
+        // It's important to add --info because of SONARJNKNS-281
+        sh './gradlew --info sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=4034cf9fc8967369b1e64f53bdaeddd1fc33991b -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
       }
     }
     stage('') {
       steps {
-        waitForQualityGate(abortPipeline: true, credentialsId: '4034cf9fc8967369b1e64f53bdaeddd1fc33991b')
+        waitForQualityGate(abortPipeline: true)
       }
     }
   }
