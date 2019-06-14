@@ -32,10 +32,5 @@ pipeline {
 
       }
     }
-    stage('Stage AssertQuality') {
-      steps {
-        waitForQualityGate(abortPipeline: true, credentialsId: '4034cf9fc8967369b1e64f53bdaeddd1fc33991b')
-      }
-    }
   }
 }
