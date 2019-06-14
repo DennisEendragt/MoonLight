@@ -27,14 +27,14 @@ pipeline {
     stage('Stage Verify') {
       steps {
         withSonarQubeEnv('SonarQube') {
-          sh './gradlew sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=4034cf9fc8967369b1e64f53bdaeddd1fc33991b -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
+          sh './gradlew sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
         }
       }
     }
-    stage('Stage AssertQuality') {
-      steps {
-        waitForQualityGate abortPipeline: true
-      }
-    }
+    //stage('Stage AssertQuality') {
+      //steps {
+        //waitForQualityGate abortPipeline: true
+      //}
+    //}
   }
 }
