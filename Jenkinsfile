@@ -29,7 +29,6 @@ pipeline {
         withSonarQubeEnv('SonarQube') {
           sh './gradlew sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
         }
-
       }
     }
   }
