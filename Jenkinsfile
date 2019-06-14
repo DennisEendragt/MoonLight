@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       image 'cirrusci/android-sdk:tools'
-      args '-v gradle-repo:/root/.gradle -v ANDROID_HOME:/opt/android-sdk-linux'
+      args '-v gradle-repo:/root/.gradle -v ANDROID_HOME:/root/opt/android-sdk-linux'
       reuseNode true
     }
 
