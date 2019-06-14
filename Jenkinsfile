@@ -5,7 +5,6 @@ pipeline {
       args '-v gradle-repo:/root/.gradle -v ANDROID_HOME:/root/opt/android-sdk-linux'
       reuseNode true
     }
-
   }
   stages {
     stage('Stage Checkout') {
