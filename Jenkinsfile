@@ -5,6 +5,7 @@ pipeline {
       args '-v gradle-repo:/root/.gradle -v ANDROID_HOME:/root/opt/android-sdk-linux'
       reuseNode true
     }
+
   }
   stages {
     stage('Stage Checkout') {
@@ -28,6 +29,12 @@ pipeline {
         withSonarQubeEnv('SonarQube') {
           sh './gradlew sonarqube -Dsonar.projectKey=DennisEendragt_MoonLight -Dsonar.organization=denniseendragt-github -Dsonar.c.file.suffixes=--Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-'
         }
+
+      }
+    }
+    stage('') {
+      steps {
+        archiveArtifacts(artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true)
       }
     }
   }
