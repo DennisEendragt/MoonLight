@@ -32,9 +32,10 @@ pipeline {
 
       }
     }
-    stage('') {
+    stage('Stage Archive') {
       steps {
         archiveArtifacts(artifacts: 'app/build/outputs/apk/*.apk', fingerprint: true)
+        sh 'mkdir -p app/build/outputs/apk'
       }
     }
   }
